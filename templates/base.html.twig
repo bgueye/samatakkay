@@ -32,6 +32,8 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="{{asset('assets/css/carousel.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/takkay.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <header>
@@ -43,7 +45,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Nos bijoux</a>
+                    <a class="nav-link" href="{{ path('products') }}">Nos bijoux</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Qui Sommes sous?</a>
@@ -118,41 +120,39 @@
     </div>
     {% endif %}
 
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
     <div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
 
     {% block content %}
     {% endblock %}
 
-    </div><!-- /.container -->
+    </div>
+    
+    <!-- /.container -->
 
     <!-- FOOTER -->
-    <footer class="container-fluid">
-        <div class="row justify-content-around align-items-center">
-            <div class=" col-12 col-md-4 text-center ">
-                <h2>Adresse</h2>
-                <p>5 Rue Marc Seguin <br> 94000 Créteil, France</p>
-            </div>
-            <div class="col-12 col-md-4 text-center ">
-                <h2>Nous suivre sur les réseaux sociaux</h2>
-                <div>
-                    <a href="https://facebook.com " target="_blank "><i class="fa fa-facebook " aria-hidden="true "></i></a>
-                    <a href="https://twitter.com " target="_blank "><i class="fa fa-twitter " aria-hidden="true "></i></a>
-                    <a href="https://instagram.com " target="_blank "><i class="fa fa-instagram " aria-hidden="true "></i></a>
-                    <a href="https://youtube.com " target="_blank "><i class="fa fa-youtube " aria-hidden="true "></i></a>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 text-center "></div>
-        </div>
-        <hr>
-        <p class="copyright">&copy; 2021 samatakkay</p>
 
-    </footer>
 </main>
+<footer class="container-fluid footer-custom">
+    <div class="row justify-content-around align-items-center">
+        <div class=" col-12 col-md-4 text-center ">
+            <h2>Adresse</h2>
+            <p>5 Rue Marc Seguin <br> 94000 Créteil, France</p>
+        </div>
+        <div class="col-12 col-md-4 text-center ">
+            <h2>Nous suivre sur les réseaux sociaux</h2>
+            <div>
+                <a href="https://facebook.com " target="_blank "><i class="fa fa-facebook " aria-hidden="true "></i></a>
+                <a href="https://twitter.com " target="_blank "><i class="fa fa-twitter " aria-hidden="true "></i></a>
+                <a href="https://instagram.com " target="_blank "><i class="fa fa-instagram " aria-hidden="true "></i></a>
+                <a href="https://youtube.com " target="_blank "><i class="fa fa-youtube " aria-hidden="true "></i></a>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 text-center "></div>
+    </div>
+    <hr>
+    <p class="copyright">&copy; 2021 samatakkay</p>
+
+</footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.js')}}"></script>
 </body>
