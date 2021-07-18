@@ -3,13 +3,14 @@
 {% block title %}Mon compte - Samatakkay !{% endblock %}
 
 {% block content %}
-    <h1>Mon compte</h1>
-    Bienvenu {{app.user.firstname}} dans votre compte. <br/>
+    <h1 class="title">Mon compte</h1>
+    Bienvenu {{app.user.firstname}} dans votre compte. <br>
     C'est ici que vous allez pouvoir gérer toutes vos informations.
     <hr>
     A faire <br>
-     - <a href="{{ path('account_password') }}">Modifier mon mot de passe<a/><br>
+     - <a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br>
      - Ajouter une Adresse<br>
      - Mes commandes <br>
      <hr>
+
 {% endblock %}

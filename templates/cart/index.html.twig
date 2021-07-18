@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier - Samatakkay {% endblock %}
+
+{% block content %}
+    <h1 class="title">Mon panier</h1>
+    {% if cart|length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Produit</th>
+                    <th scope="col"></th>
+                    <th scope="col">Qantité</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set total = null %}
+                {% for line in cart %}
+                <tr>
+                    <td>
+                        <img src="/uploads/media/{{ line.product.illustration }}" alt="{{ line.product.name}}" height="70px">
+                    </td>
+                    <td>{{ line.product.name}}</td>
+                    <td>
+                        <a href="{{ path('decrease-to-cart', { 'id' : line.product.id }) }}">
+                            <img src="{{ asset('assets/img/moins.png') }}" alt="décrementer" height="12px">
+                        </a>
+
+                        {{ line.quantity}}
+
+                        <a href="{{ path('add-to-cart', { 'id' : line.product.id }) }}">
+                            <img src="{{ asset('assets/img/add.png') }}" alt="ajouter" height="12px">
+                        </a>
+                    </td>
+                    <td>{{ (line.product.price /100)|number_format (2, ',', '.')}} €</td>
+                    <td>{{ (line.product.price * line.quantity / 100)|number_format (2, ',', '.')}} €</td>
+                    <td>
+                        <a href="{{ path('delete-to-cart', { 'id' : line.product.id }) }}">
+                            <img src="{{ asset('assets/img/delete.png') }}" alt="supprimer" height="20px">
+                        </a>
+                    </td>
+                </tr>
+                {% set total = total + (line.product.price * line.quantity) %}
+                {% endfor %}
+                
+            </tbody>
+        </table>
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Nombre de produit</td>
+                    <td>{{ cart|length }}</td>
+                </tr>            
+                <tr>
+                    <td>Sous-total</td>
+                    <td>{{ (total / 100)|number_format (2, ',', '.') }} €</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td>21,00€</td>
+                </tr>
+                <tr>
+                    <td>Frais de transport</td>
+                    <td>10,00€</td>
+                </tr>
+                <tr>
+                    <td>Total ttc</td>
+                    <td>241,00€</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="" class="btn">Valider mon panier</a></td>
+                </tr>
+
+            </table>
+        </div>
+    {% else %}
+        <hr>
+        <p class="text-center"><b>Votre panier est vide ! </b></p>
+    {% endif %}
+{% endblock %}

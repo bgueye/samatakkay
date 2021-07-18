@@ -3,7 +3,7 @@
 {% block title %}Nos produits - Samatakkay{% endblock %}
 
 {% block content %}
-
+<h1 class="title">Nos bijoux fantaisies</h1>
 <div class="row">
 
     <div class="col-md-3">
@@ -13,11 +13,9 @@
 
     <div class="col-md-9">
 
-        <h1 class="title">Nos bijoux fantaisies</h1>
-
         <div class="row">    
             {% for product in products %}
-                <div class="col-12 col-md-4 my-3" >
+                <div class="col-12 col-md-4 my-4 cards-custum" >
                     <div class="card text-center" style="width: 18rem;">
                     <a href="{{ path('product', {'slug' : product.slug}) }}"><img src="/uploads/media/{{ product.illustration }}" class="card-img-top" alt="..."></a>
                     <div class="card-body">
