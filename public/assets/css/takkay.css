@@ -40,6 +40,11 @@ main {
     transition: transform .5s;
 }
 
+.block-small {
+    max-width: 600px;
+    margin: auto;
+}
+
 .btn {
     display: inline-block;
     background: #ff523b;
@@ -91,6 +96,22 @@ th:last-child {
 .cart-icon {
     height: 25px;
     padding-left: 20px;
+}
+
+.form-check {
+    background: radial-gradient(#fff, #ffd6d6);
+    padding: 20px 65px;
+    margin-top: 10px;
+}
+
+.col-form-label {
+    font-weight: bold;
+}
+
+.order-summary {
+    background: radial-gradient(#fff, #ffd6d6);
+    padding: 20px;
+    margin-top: 10px;
 }
 
 footer {

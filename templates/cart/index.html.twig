@@ -59,19 +59,11 @@
                     <td>{{ (total / 100)|number_format (2, ',', '.') }} €</td>
                 </tr>
                 <tr>
-                    <td>Tax</td>
-                    <td>21,00€</td>
+                    <td>Total Commande</td>
+                    <td>{{ (total / 100)|number_format (2, ',', '.') }} €</td>
                 </tr>
                 <tr>
-                    <td>Frais de transport</td>
-                    <td>10,00€</td>
-                </tr>
-                <tr>
-                    <td>Total ttc</td>
-                    <td>241,00€</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><a href="" class="btn">Valider mon panier</a></td>
+                    <td colspan="2"><a href="{{ path('order') }}" class="btn">Valider mon panier</a></td>
                 </tr>
 
             </table>
