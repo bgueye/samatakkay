@@ -27,7 +27,7 @@ class OrderController extends AbstractController
     /**
      * @Route("/commande", name="order")
      */
-    public function index(Cart $cart, Request $request): Response
+    public function index(Cart $cart): Response
     {
         if (!$this->getUser()->getAddresses()->getValues()){
             return $this->redirectToRoute('account_address_add');
@@ -73,6 +73,8 @@ class OrderController extends AbstractController
             
 
             $order = new Order();
+            $reference = $date->format('dmY').'-'.uniqid();
+            $order->setReference($reference);
             $order->setUser($this->getUser())
                     ->setCreatedAt($date);
             $order->setCarrierName($carriers->getName());
@@ -81,8 +83,9 @@ class OrderController extends AbstractController
             $order->setIsPaid(false);
 
             $this->em->persist($order);
-
+            
             //Enregistrer mes produit OrderDetails()
+            
             foreach($cart->getFull() as $product){
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
@@ -91,15 +94,17 @@ class OrderController extends AbstractController
                 $orderDetails->setPrice($product['product']->getPrice());
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
                 $this->em->persist($orderDetails);
-
+               
             }
 
             $this->em->flush();
-            
+
+
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
-                'delivery' => $delivery_content
+                'delivery' => $delivery_content,
+                'reference' => $order->getReference()
             ]);
         }
 
