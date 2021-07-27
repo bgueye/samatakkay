@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande {{ order.reference }}- Samatakkay !{% endblock %}
+
+{% block content %}
+    <h1 class="title">Ma commande {{ order.reference }}</h1>
+
+    <a href="{{ path('account_order') }}">&#x2190;Retour</a><br><br>
+    <hr>
+    <strong>Commande passée le :</strong> {{ order.createdAt | date('d/m/Y') }} <br>
+    <strong>Réference de la commande :</strong> {{ order.reference }} <br>
+    <strong>Transporteur choisi :</strong> {{ order.Carriername }} <br>
+    <hr>
+    <strong>Détails :</strong><br>
+    <table class="table my-3">
+            <thead>
+                <tr>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in order.orderDetails %}
+                    <tr>
+                        <td>{{ product.product }}</td>
+                        <td>{{ (product.price / 100)|number_format (2, ',', ' ') }} € </td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ (product.total / 100)|number_format (2, ',', ' ')  }} € </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="total-price">
+            <table>           
+                <tr>
+                    <td>Sous-total</td>
+                    <td>{{ (order.getTotal / 100 )|number_format (2, ',', '.') }} €</td>
+                </tr>
+                <tr>
+                    <td>Livraison</td>
+                    <td>{{ (order.carrierPrice / 100)|number_format (2, ',', '.') }} €</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>{{ ((order.carrierPrice + order.getTotal) / 100)|number_format (2, ',', ' ') }} €</td>
+                </tr>
+
+            </table>
+        </div>
+    
+    
+{% endblock %}

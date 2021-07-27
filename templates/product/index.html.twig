@@ -6,7 +6,7 @@
 <h1 class="title">Nos bijoux fantaisies</h1>
 <div class="row">
 
-    <div class="col-md-3">
+    <div class="col-md-3 my-4">
         <h3>Filtre</h3>
         {{ form(form) }}
     </div>
@@ -16,13 +16,13 @@
         <div class="row">    
             {% for product in products %}
                 <div class="col-12 col-md-4 my-4 cards-custum" >
-                    <div class="card text-center" style="width: 18rem;">
-                    <a href="{{ path('product', {'slug' : product.slug}) }}"><img src="/uploads/media/{{ product.illustration }}" class="card-img-top" alt="..."></a>
-                    <div class="card-body">
-                        <h5>{{ product.name }}</h5>
-                        <p class="card-text">Prix: {{( product.price / 100)|number_format (2, ',', '.')}} €</p>
-                    </div>
-                    </div>
+                    <!--div class="card "-->
+                        <a href="{{ path('product', {'slug' : product.slug}) }}"><img src="/uploads/media/{{ product.illustration }}" class="card-img-top" alt="{{ product.name }}"></a>
+                        <div class="card-body text-center">
+                            <h5>{{ product.name|upper }}</h5>
+                            <p class="card-text"><strong>Prix: {{( product.price / 100)|number_format (2, ',', ' ')}} €</strong></p>
+                        </div>
+                    <!--/div-->
                 </div>    
             {% endfor %}
         </div>
