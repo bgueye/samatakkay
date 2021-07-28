@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Classes\Cart;
+use App\Classes\Mail;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,6 +39,10 @@ class OrderSuccessController extends AbstractController
            $order->setIsPaid(1);
            $this->em->flush();
            //Envoyer un mail au client pour lui confirmer sa commande
+           $mail = new Mail();
+            $content = "Bonjour ".$order->getUser()->getFirstname().",<br/>Merci pour votre commande sur la boutique des bijoux fantaisies.<b/><b/>Votre commande est en traitement vous serez informé(e) par mail dès son expédition.";
+            $mail->send($order->getUser()->getEmail(), $order->getUser()->getFirstname(), "Votre commande samatakkay, la boutique des bijoux fantaisie est bien validée", $content);
+
         }
         
         //Afficher quelques informations de la commande
