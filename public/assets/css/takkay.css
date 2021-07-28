@@ -99,6 +99,10 @@ th:last-child {
     padding-left: 20px;
 }
 
+.action-updatePreparation {
+    margin-left: 10px;
+}
+
 .form-check {
     background: radial-gradient(#fff, #ffd6d6);
     padding: 20px 65px;

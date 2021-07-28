@@ -32,11 +32,11 @@ class OrderSuccessController extends AbstractController
         }
 
         
-        if(!$order->getIsPaid()){
+        if($order->getState() == 0 ){ //a modifier
         //vider la session "cart"
         $cart->remove();
-        // modifier le statut ispaid de la commande à 1 
-        $order->setIsPaid(1);
+        // modifier le statut de la commande à 1 
+        $order->setState(1);
         $this->em->flush();
         //Envoyer un mail au client pour lui confirmer sa commande
         $mail = new Mail();
