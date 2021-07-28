@@ -93,9 +93,9 @@ class OrderCrudController extends AbstractCrudController
             TextField::new('carrierName', 'transporteur'),
             MoneyField::new('carrierPrice', 'Frais de port')->setCurrency('EUR'),
             ChoiceField::new('state', 'Statut')->setChoices([
-                'non payé' => 0,
-                'payée' => 1,
-                'en préparation' => 2,
+                'Non payé' => 0,
+                'Payée' => 1,
+                'Préparation en cours' => 2,
                 'Livraison en cours' => 3,
             ]),
             ArrayField::new('orderDetails', 'Produits achetés')->hideOnIndex()
