@@ -18,5 +18,15 @@
 
         </div>
     </div>
+    <hr>
+    <h1 class="title">Nos meilleures ventes</h1>
+    <p class="text-center">Découvrez les articles les plus vendus en ce moment</p>
+    <div class="row my-5">
+        {% for product in products %}
+            <div class="col-12 col-md-3 my-4 cards-custum" >
+                {% include 'product/single_product.html.twig' %}
+            </div>    
+        {% endfor %}
+    </div>
     
 {% endblock %}
