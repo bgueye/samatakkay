@@ -10,7 +10,9 @@ class Mail
 
     public function send($to_email, $to_name, $subject, $content)
     {
-        $mj = new Client(getenv('API_KEY'), getenv('API_KEY_SECRET'), true,['version' => 'v3.1']);
+        $api_key='92e4bfbcf8a288fa4667e6b747d1046d';
+        $api_key_secret='ba2b674adb88e0b6b41a24d7d8fce51f';
+        $mj = new Client($api_key, $api_key_secret, true, ['version' => 'v3.1']);
         $body = [
             'Messages' => [
                 [
