@@ -47,24 +47,36 @@
                         <a class="nav-link" href="{{ path('products') }}">Nos bijoux</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Qui Sommes sous?</a>
+                        <a class="nav-link" href="#">Qui Sommes sous ?</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('contact')}}">Contact</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
                 </ul>
-                <div class="navbar-item-custum">
-                    {% if app.user %}
-                        <a href="{{ path('account') }}">Mon compte <small>({{ app.user.firstname }})</small></a> | <a href="{{ path('app_logout') }}">Déconnexion</a>
-                    {% else %}
-                        <a href="{{ path('app_login') }}">Connexion</a> | <a href="{{ path('register') }}">Inscription</a>
-                    {% endif %}
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        {% if app.user %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ path('account') }}">Mon compte <small>({{ app.user.firstname }})</small></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ path('register') }}">Inscription</a>
+                            </li>
+                        {% endif %}
+                    </ul>
                 </div>
-                    <a href="{{ path('cart') }}">
+                    <a href="{{ path('cart') }}" class="position-relative px-3">
                         <img src="{{ asset('assets/img/shopping-cart.png') }}" alt="mon panier" class="cart-icon">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ app.session.get('cart')|length }}
+                        </span>
                     </a>
             </div>
         </nav>
@@ -81,18 +93,17 @@
             </ol>
             
             <div class="carousel-inner">
-            {% for key,header in headers %}
-                <div class="carousel-item {% if key == 0 %}active{% endif %}" style="background: url('/uploads/media/{{ header.illustration }}');background-size: cover;">
-                    <div class="container">
-                        <div class="carousel-caption text-left">
-                            <h1>{{ header.title }}</h1>
-                            <p>{{ header.content }}</p>
-                            <p><a class="btn" href="{{ header.btnUrl }}" role="button">{{ header.btnTitle }}</a></p>
+                {% for key,header in headers %}
+                    <div class="carousel-item {% if key == 0 %}active{% endif %}" style="background: url('/uploads/media/{{ header.illustration }}');background-size: cover;">
+                        <div class="container">
+                            <div class="carousel-caption text-left">
+                                <h1>{{ header.title }}</h1>
+                                <p>{{ header.content }}</p>
+                                <p><a class="btn" href="{{ header.btnUrl }}" role="button">{{ header.btnTitle }}</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-            {% endfor %}
+                {% endfor %}
             </div>
             
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">

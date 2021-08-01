@@ -46,7 +46,7 @@ class SearchType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Search::class,
-            'method' => 'GET',
+            'method' => 'POST',
             'crsf-protection' => false,
 
         ]);

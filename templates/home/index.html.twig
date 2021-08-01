@@ -14,6 +14,17 @@
         {% endfor %}
     </div><!-- /.row -->
 
+    <!-- Three columns of text below the carousel -->
+    <h1 class="title">Nouveautés</h1>
+    <p class="text-center">Découvrez les denièrs articles</p>
+    <div class="row">
+        {% for product in newProducts %}
+            <div class="col-12 col-md-3 my-4 cards-custum" >
+                {% include 'product/single_product.html.twig' %}
+            </div>    
+        {% endfor %}
+    </div><!-- /.row -->    
+
 
     <!-- START THE FEATURETTES -->
 
@@ -44,4 +55,6 @@
     <hr class="featurette-divider">
 
     <!-- /END THE FEATURETTES -->
+
+
 {% endblock %}

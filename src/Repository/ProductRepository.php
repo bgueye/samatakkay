@@ -48,6 +48,19 @@ class ProductRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+
+
+    public function findNewProduct()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.published = 1')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

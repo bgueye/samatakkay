@@ -45,6 +45,10 @@ main {
     margin: auto;
 }
 
+.carousel {
+    background: radial-gradient(#fff, #ffd6d6);
+}
+
 .btn {
     display: inline-block;
     background: #ff523b;
@@ -173,4 +177,25 @@ ul {
 
 .copyright {
     text-align: center;
+}
+
+
+/*-------------------media query 991px---------*/
+
+@media only screen and (max-width: 900px) {
+    .cards-custum {
+        flex-basis: 50%;
+    }
+}
+
+
+/*-------------------media query 600px---------*/
+
+@media only screen and (max-width: 600px) {
+    .cards-custum {
+        flex-basis: 100%;
+    }
+    .row {
+        text-align: center;
+    }
 }
