@@ -47,7 +47,7 @@
                         <a class="nav-link" href="{{ path('products') }}">Nos bijoux</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Qui Sommes sous ?</a>
+                        <a class="nav-link" href="{{ path('presentation') }}">Qui Sommes sous ?</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('contact')}}">Contact</a>
@@ -74,9 +74,11 @@
                 </div>
                     <a href="{{ path('cart') }}" class="position-relative px-3">
                         <img src="{{ asset('assets/img/shopping-cart.png') }}" alt="mon panier" class="cart-icon">
+                        {% if app.session.get('cart')|length > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ app.session.get('cart')|length }}
                         </span>
+                        {% endif %}
                     </a>
             </div>
         </nav>
@@ -146,10 +148,10 @@
             <div class="col-12 col-md-4 text-center ">
                 <h2>Nos liens utils</h2>
                     <ul>
-                        <li>Coupon</li>
+                        <li>Mensions légales</li>
+                        <li>Politique de confidentialité</li>
                         <li>Le blog du styliste</li>
-                        <li>Politique de retour</li>
-                        <li>Nous joindre</li>
+                        <li><a href="{{ path('contact')}}">Nous contacter</a></li>
                     </ul>
             </div>
         </div>

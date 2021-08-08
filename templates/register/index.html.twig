@@ -2,12 +2,13 @@
 
 {% block content %}
     <h1 class="title">Inscription</h1>
-
+    
     {% if notification %}
         <div class="alert alert-info">{{ notification }}</div>
         <hr>
     {% endif %}
     <div class="block-small">
+        <p class="text-center"><strong>Déjà membre ? <a href="{{ path('app_login') }}">Se connecter</a></strong></p>
         {{ form(form) }}
     </div>
 {% endblock %}

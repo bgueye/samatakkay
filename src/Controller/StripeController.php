@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Stripe\Stripe;
-use App\Classes\Cart;
 use App\Entity\Order;
 use App\Entity\Product;
 use Stripe\Checkout\Session;
@@ -17,7 +16,7 @@ class StripeController extends AbstractController
     /**
      * @Route("/commande/create-session/{reference}", name="stripe_create_session")
      */
-    public function index(EntityManagerInterface $entityManager, Cart $cart, $reference)
+    public function index(EntityManagerInterface $entityManager, $reference)
     {
         Stripe::setApiKey('sk_test_51JG7bDJQOAme2gwHolD7pRCbRMJT0aeDZ0gFAZN9QyRnVkC5yXaTskbZVeS92rOViEGHi8Qxu1aMMu17bzBcRsPv00ya6k1rCm');
         

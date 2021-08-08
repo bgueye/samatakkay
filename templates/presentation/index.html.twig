@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qui sommes-nous ? - Samatakkay{% endblock %}
+
+{% block content %}
+    <h1 class="title">Qui  sommes-nous ?</h1>
+
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+
+    <div class="row mb-5">
+
+        <div class="col-md-8">
+            <p>Bonjour et bienvenue sur <strong>SAMATAKKAY</strong>, le site où trouver les meilleurs bijoux fantaisie 
+                pour tous les styles et toutes les occasions. Nous surveillons de près la qualité de nos produits, en travaillant
+                 uniquement avec les meilleurs fournisseurs, pour vous offrir la crème de la crème.</p>
+            <p>chez <strong>SAMATAKKAY</strong>, nous croyons à l’excellence pour nos produits comme pour notre service client. 
+            Mais le plus important, nous pensons que le shopping doit être un plaisir pour tous et non un luxe. C’est pourquoi nous 
+            faisons tout pour vous fournir une excellente qualité à prix abordable et ce partout dans le monde.</p>
+            <p>Notre mission est d’offrir à nos clients un vaste choix de bijoux fantaisie. Notre expérience en la matière nous permet 
+            de sources le meilleur rapport qualité/prix pour vous.</p>
+            <p>Nous suivons de près les dernières tendances en mode et donnons la priorité aux envies de nos clients.</p>
+            <p>Nous espérons que vous aimerez nos produits autant que nous aimons les trouver pour vous</p>
+        </div>
+        
+        <div class="col-md-4 p-5">
+            <strong>SAMATAKKAY<br/> La boutique des bijoux fantaisies</strong>
+            <hr>
+            06 06 06 12 34<br/><br/>
+            5 Rue Mars Seguin, 94000 Créteil.<br/><br/>
+            contact@samatakkay.com<br/>
+            <a class="btn" href="{{ path('contact')}}">Nous contacter</a>
+        </div>
+
+    </div>
+{% endblock %}
