@@ -21,7 +21,10 @@ class ResetPasswordType extends AbstractType
                 'required' => true,
                 'first_options' => [
                     'label' => 'Nouveau mot de passe',
-                    'attr' => ['placeholder' => 'Saisir votre nouveau mot de passe']
+                    'attr' => [
+                        'placeholder' => 'Saisir votre nouveau mot de passe',
+                        'pattern' => "^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$"
+                    ]
                 ],
                 'second_options' => [
                     'label' => 'Confirmez votre nouveau mot de passe',

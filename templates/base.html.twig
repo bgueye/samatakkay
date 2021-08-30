@@ -37,17 +37,17 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="{{ path('home') }}"><img src="{{asset('assets/img/logobf_blanc.png')}}" height="45px"></a>
+            <a class="navbar-brand" href="{{ path('home') }}"><img src="{{asset('assets/img/logoSamatakkay.png')}}" height="45px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="collapse navbar-collapse navbar-item-custum" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('products') }}">Nos bijoux</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('presentation') }}">Qui Sommes sous ?</a>
+                        <a class="nav-link" href="{{ path('presentation') }}">Qui Sommes-sous ?</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('contact')}}">Contact</a>
@@ -148,9 +148,9 @@
             <div class="col-12 col-md-4 text-center ">
                 <h2>Nos liens utils</h2>
                     <ul>
-                        <li>Mensions légales</li>
-                        <li>Politique de confidentialité</li>
-                        <li>Le blog du styliste</li>
+                        <li><a href="">Mensions légales</a></li>
+                        <li><a href="">Politique de confidentialité</a></li>
+                        <li><a href="">Le blog du styliste</a></li>
                         <li><a href="{{ path('contact')}}">Nous contacter</a></li>
                     </ul>
             </div>

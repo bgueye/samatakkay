@@ -55,7 +55,10 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'first_options' => [
                     'label' => 'Mot de passe',
-                    'attr' => ['placeholder' => 'Votre mot de passe']
+                    'attr' => [
+                        'placeholder' => 'Votre mot de passe',
+                        'pattern' => "^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$"
+                    ]
                 ],
                 'second_options' => [
                     'label' => 'Confirmez votre mot de passe',

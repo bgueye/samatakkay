@@ -52,7 +52,7 @@ class RegisterController extends AbstractController
                 $content = "Bonjour ".$user->getFirstname().",<br/>Bienvenue sur samatakkay, la boutique des bijoux fantaisies.<b/><b/>Votre inscriptions'est correctement déroulée. Vous pouvez dès à présent vous connecter à votre compte.";
                 $mail->send($user->getEmail(), $user->getFirstname(), "Bienvenue sur samatakkay, la boutique des bijoux fantaisie", $content);
 
-                $notification ="Votre inscriptions'est correctement déroulée. Vous pouvez dès à présent vous connecter à votre compte.";
+                $notification ="Votre inscription s'est correctement déroulée. Vous pouvez dès à présent vous connecter à votre compte.";
             }else{
                 $notification ="L'email que vous avez renseigné existe déjà.";
             }
