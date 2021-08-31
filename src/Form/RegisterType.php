@@ -57,7 +57,8 @@ class RegisterType extends AbstractType
                     'label' => 'Mot de passe',
                     'attr' => [
                         'placeholder' => 'Votre mot de passe',
-                        'pattern' => "^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$"
+                        'pattern' => "^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$",
+                        'title' => "Au moins 8 caractères, une lettre majuscule et minuscule, un chiffre et un caractère spécial."
                     ]
                 ],
                 'second_options' => [

@@ -91,14 +91,20 @@ class ResetPasswordController extends AbstractController
         if($form->isSubmitted() && $form->isvalid()){
             $new_pwd = $form->get('new_password')->getData();
 
-            //encodage du mot de passe
-            $password = $encoder->hashPassword($reset_password->getUser(), $new_pwd);
-            //enregistrement en base de données
-            $reset_password->getUser()->setPassword($password);
-                $this->em->flush();
-            //Redirection ver la page de connexion
-            $this->addFlash('notice', 'Votre mot de passe à bien été mis à jour.');
-            return $this->redirectToRoute('app_login');
+            if (preg_match('#^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$#', $new_pwd)) {
+                
+                //encodage du mot de passe
+                $password = $encoder->hashPassword($reset_password->getUser(), $new_pwd);
+                //enregistrement en base de données
+                $reset_password->getUser()->setPassword($password);
+                    $this->em->flush();
+                //Redirection ver la page de connexion
+                $this->addFlash('notice', 'Votre mot de passe à bien été mis à jour.');
+                return $this->redirectToRoute('app_login');
+            }
+            else{
+                $this->addFlash('notice', 'Votre mot de passe n\'est pas conforme au format requis.');
+            }
         }
         return $this->render('reset_password/update.html.twig', [
             'form' => $form->createView()

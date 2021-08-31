@@ -37,11 +37,15 @@ class AccountPasswordController extends AbstractController
             
             if ($encoder->isPasswordValid($user, $old_pwd)){
                 $new_pwd = $form->get('new_password')->getData();
-                $password = $encoder->hashPassword($user, $new_pwd);
 
-                $user->setPassword($password);
-                $this->em->flush(); 
-                $notification= 'Votre mot de passe a été mis à jour !';               
+                if (preg_match('#^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$#', $new_pwd)) {
+                    $password = $encoder->hashPassword($user, $new_pwd);
+                    $user->setPassword($password);
+                    $this->em->flush(); 
+                    $notification= 'Votre mot de passe a été mis à jour !';
+                }else{
+                    $notification = "Votre nouveau mot de passe n'est pas conforme au format requis.";
+                }               
             }else{
                 $notification= "Votre mot de passe actuel n'est pas le bon !";               
             }

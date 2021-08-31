@@ -23,7 +23,8 @@ class ResetPasswordType extends AbstractType
                     'label' => 'Nouveau mot de passe',
                     'attr' => [
                         'placeholder' => 'Saisir votre nouveau mot de passe',
-                        'pattern' => "^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$"
+                        'pattern' => "^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$",
+                        'title' => "Au moins 8 caractères, une lettre majuscule et minuscule, un chiffre et un caractère spécial."
                     ]
                 ],
                 'second_options' => [
