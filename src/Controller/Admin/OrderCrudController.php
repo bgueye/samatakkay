@@ -38,10 +38,14 @@ class OrderCrudController extends AbstractCrudController
     {
         $updatePreparation = Action::new('updatePreparation', 'préparation en cours ', 'fas fa-box-open')->linkToCrudAction('updatePreparation');
         $updatedelivery = Action::new('updatedelivery', 'Livraison en cours | ', 'fas fa-truck')->linkToCrudAction('updateDelivery');
+        $isdelivery = Action::new('isdelivery', 'Livrée | ', 'fas fa-address-card')->linkToCrudAction('isDelivery');
         return $actions
             ->add('detail', $updatePreparation)
             ->add('detail', $updatedelivery)
-            ->add('index', 'detail');
+            ->add('detail', $isdelivery)
+            ->add('index', 'detail')
+            ->remove('index', 'edit')
+            ->remove('detail', 'edit');
     }
 
     public function updatePreparation(AdminContext $context)
@@ -75,6 +79,21 @@ class OrderCrudController extends AbstractCrudController
         
         return $this->redirect($url);
     }
+    public function isDelivery(AdminContext $context)
+    {
+        $order = $context->getEntity()->getInstance();
+        $order->setState(4);
+        $this->em->flush();
+
+        $this-> addFlash('noice', "<span style='color:orange;'><strong>La commande <u>".$order->getReference()."</u> est bien <u>livrée</u> à l'adresse indiquée. </strong></span>");
+
+        $url = $this->crudUrlGenerator->build()
+            ->setController(OrderCrudController::class)
+            ->setAction('index')
+            ->generateUrl();
+        
+        return $this->redirect($url);
+    }    
 
 
     public function configureCrud(Crud $crud): Crud
@@ -97,6 +116,7 @@ class OrderCrudController extends AbstractCrudController
                 'Payée' => 1,
                 'Préparation en cours' => 2,
                 'Livraison en cours' => 3,
+                'Livrée' => 4
             ]),
             ArrayField::new('orderDetails', 'Produits achetés')->hideOnIndex()
         ];
