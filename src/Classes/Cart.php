@@ -43,9 +43,9 @@ class Cart
 
     public function add($id)
     {
-
+        //Récupérer la cart
         $cart = $this->session->get('cart', []);
-
+        //Si le produit est déjà dans le panier, incrémenter
         if(!empty($cart[$id])){
             $cart[$id]++;
         }else{
