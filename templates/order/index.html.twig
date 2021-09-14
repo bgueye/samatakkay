@@ -7,7 +7,7 @@
 <p>Choisissez vos préferences avant de passer votre commande sur samatakkay</p>
 <hr>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 order-sm-2 order-md-1">
 
         {% set formHtml %}
             {{ form_start(form, {action:path('order_recap')}) }}
@@ -20,7 +20,7 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 order-sm-1 order-md-2">
         <div class="text-center">
             <b>Récap de ma commande</b><br>
             <p>Retrouvez le récapitulatif de vos produits</p>

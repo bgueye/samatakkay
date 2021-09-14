@@ -19,7 +19,6 @@ class OrderSuccessController extends AbstractController
         $this->em = $entityManager;
     }
 
-
     /**
      * @Route("/commande/merci/{stripSessionId}", name="order_validate")
      */
